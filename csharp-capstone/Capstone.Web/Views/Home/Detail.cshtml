@@ -1,4 +1,4 @@
-﻿@model Park
+﻿@model DetailView
 
 @{
     ViewData["Title"] = "Detail";
@@ -8,12 +8,22 @@
 
 <form method="get" asp-controller="home" asp-action="detail">
 
-                    <img src="~/images/@(Model.ParkCode).jpg" alt="Image of @Model.ParkName" />
+    <img src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
 
-                    <h3>@Model.ParkName</h3>
+    <h3>@Model.Park.ParkName</h3>
 
-                    <p>@Model.Description</p>
- 
+    <p>@Model.Park.Description</p>
+
+
+    @foreach (var forecast in Model.fiveDay)
+    {
+        <p>@forecast.Low</p>
+        <p>@forecast.High</p>
+        <p>@forecast.Forecast</p>
+        <p>@forecast.FiveDayForecastValue</p>
+
+    }
+
 </form>
 
 

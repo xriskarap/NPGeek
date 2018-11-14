@@ -23,5 +23,7 @@ namespace Capstone.Web.Models
         public decimal EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
 
+        public IList<Weather> Forecasts { get; set; }
+
     }
 }

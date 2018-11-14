@@ -13,10 +13,12 @@ namespace Capstone.Web.Controllers
     {
 
         private IParkDAL dal;
-        
-        public HomeController(IParkDAL dal)
+        private IWeatherDAL weatherDal;
+
+        public HomeController(IParkDAL dal, IWeatherDAL weatherDal)
         {
             this.dal = dal;
+            this.weatherDal = weatherDal;
         }
 
         [HttpGet]
@@ -27,13 +29,17 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Detail(string parkCode)
+        public IActionResult Detail(string id)
         {
-            var park = dal.GetPark(parkCode);
-            return View(park);
+            DetailView detailView = new DetailView();
+            var park = dal.GetPark(id);
+            detailView.Park = park;
+            var weather = weatherDal.GetForecast(id);
+            detailView.fiveDay = weather;
+            return View(detailView);
         }
 
-      
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

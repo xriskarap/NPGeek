@@ -19,7 +19,7 @@ namespace Capstone.Web.DAL
         public Park GetPark(string parkCode)
         {
             Park park = new Park();
-            return GetParks().FirstOrDefault(p => park.ParkCode == parkCode);
+            return GetParks().FirstOrDefault(p => p.ParkCode == parkCode);
         }
 
         public IList<Park> GetParks()
