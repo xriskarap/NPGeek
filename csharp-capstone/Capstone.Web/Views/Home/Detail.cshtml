@@ -1,0 +1,19 @@
+﻿@model Park
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Park Details</h2>
+
+<form method="get" asp-controller="home" asp-action="detail">
+
+                    <img src="~/images/@(Model.ParkCode).jpg" alt="Image of @Model.ParkName" />
+
+                    <h3>@Model.ParkName</h3>
+
+                    <p>@Model.Description</p>
+ 
+</form>
+
+
