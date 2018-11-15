@@ -1,7 +1,35 @@
-﻿
+﻿@model IList<SurveyPark>
+
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+
+<h2>Top Rated Parks!!</h2>
+
+<div>
+    <table class="table">
+
+        <tbody>
+
+            @foreach (var park in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/images/@(park.surveyPark.ParkCode).jpg" />
+                    </td>
+                    <td>
+                        <p>@park.surveyPark.ParkName</p>
+                        <p>@park.surveyPark.Description</p>
+                        <p>@park.surveyPark.</p>
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+</div>
 

@@ -58,7 +58,8 @@ namespace Capstone.Web.DAL
                             ParkCode = Convert.ToString(reader["parkCode"]),
                             EmailAddress = Convert.ToString(reader["emailAddress"]),
                             State = Convert.ToString(reader["state"]),
-                            ActivityLevel = Convert.ToString(reader["activityLevel"])
+                            ActivityLevel = Convert.ToString(reader["activityLevel"]),
+                            Count = Convert.ToInt32(reader["votes"])
                         };
                         surveys.Add(surveyPost);
                     }

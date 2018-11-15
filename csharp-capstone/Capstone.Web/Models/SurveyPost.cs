@@ -26,7 +26,9 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "*")]
         public string ActivityLevel { get; set; }
 
-        public IList<Park> SurveyParks { get; set; }
+        public int Count { get; set; }
+
+        public IList<SelectListItem> SurveyParks = new List<SelectListItem>();
 
         public IList<SelectListItem> States = new List<SelectListItem>()
             {

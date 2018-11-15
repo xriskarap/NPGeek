@@ -21,22 +21,30 @@ namespace Capstone.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Dictionary<string, int> surveyCount = surveyDAL.GetSurveyPosts();
+            IList<SurveyPark> surveyParks = new List<SurveyPark>();
+
+            var surveyResults = surveyDAL.GetSurveyPosts();
+            return View(surveyResults);
         }
 
         [HttpGet]
         public IActionResult AddSurveyPost()
         {
-            IList<Park> parkList = new List<Park>();
-            SurveyPost surveyPost = new SurveyPost(); // Get all Parks using park Dal  ... Turn the List of Parks into a list of select list items ... Take the list of select list items and set a list of parks in the model
             var getParks = parkDAL.GetParks();
+            IList<Park> parkList = new List<Park>();
+            foreach (Park park in getParks)
+            {
+                parkList.Add(park);
+            }
+            SurveyPost surveyPost = new SurveyPost(); // Get all Parks using park Dal  ... Turn the List of Parks into a list of select list items ... Take the list of select list items and set a list of parks in the model
             List<SelectListItem> natParks = new List<SelectListItem>();
 
             foreach (Park park in parkList)
             {
-                natParks.Add(new SelectListItem() { Text = park.ParkName, Value = park.ParkCode });
+                surveyPost.SurveyParks.Add(new SelectListItem() { Text = park.ParkName, Value = park.ParkCode });
             }
-            return View(natParks);
+            return View(surveyPost);
         }
 
         [HttpPost]
@@ -46,7 +54,7 @@ namespace Capstone.Web.Controllers
             if (ModelState.IsValid)
             {
            surveyDAL.SaveSurveyPost(newSurvey);
-            return RedirectToAction("Index", "Survey", new {ParkCode = newSurvey.ParkCode, EmailAddress = newSurvey.EmailAddress, State = newSurvey.State, ActivityLevel = newSurvey.ActivityLevel });
+            return RedirectToAction("Index", "Survey", new { newSurvey.ParkCode, newSurvey.EmailAddress, newSurvey.State, newSurvey.ActivityLevel });
             }
             else
             {
