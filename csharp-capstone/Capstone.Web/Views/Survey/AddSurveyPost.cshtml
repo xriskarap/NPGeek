@@ -3,11 +3,23 @@
     ViewData["Title"] = "AddSurveyPost";
 }
 
+<div class="container">
+    <h2>National Parks Survey</h2>
+    <p>Please take a moment to fill out our survey and help people pick the best National Park to visit!</p>
 
-<h2>National Parks Survey</h2>
-<form asp-controller="survey" asp-action="addsurveypost" method="post">
-    <div>
-        
-    </div>
-
-</form>
+    <form asp-controller="survey" asp-action="addsurveypost" method="post">
+        <div>
+            <label asp-for="SurveyParks">Favorite Park: </label>
+            <select asp-for="SurveyParks" asp-items="Model."></select>
+        </div>
+        <div>
+            <label asp-for="EmailAddress">Email Address: </label>
+            <input type="email" asp-for="EmailAddress"/>
+        </div>
+        <div>
+            <label asp-for="State">State of Residence: </label>
+            <select asp-for="State" asp-items="Model.States"></select>
+        </div>
+        <input class="btn btn-lg" type="submit" value="Submit Survey!" />
+    </form>
+</div>

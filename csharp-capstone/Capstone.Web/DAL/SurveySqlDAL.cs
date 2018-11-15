@@ -16,7 +16,7 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-        public void AddSurveyPost(SurveyPost surveyPost)
+        public void SaveSurveyPost(SurveyPost surveyPost)
         {
             try
             {

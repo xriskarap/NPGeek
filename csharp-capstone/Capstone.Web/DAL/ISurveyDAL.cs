@@ -9,7 +9,7 @@ namespace Capstone.Web.DAL
     public interface ISurveyDAL
     {
         IList<SurveyPost> GetSurveyPosts();
-        void AddSurveyPost(SurveyPost surveyPost);
+        void SaveSurveyPost(SurveyPost surveyPost);
 
     }
 }
