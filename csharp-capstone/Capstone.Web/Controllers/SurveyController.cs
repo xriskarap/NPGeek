@@ -19,13 +19,21 @@ namespace Capstone.Web.Controllers
             this.parkDAL = parkDAL;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             Dictionary<string, int> surveyCount = surveyDAL.GetSurveyPosts();
             IList<SurveyPark> surveyParks = new List<SurveyPark>();
 
-            var surveyResults = surveyDAL.GetSurveyPosts();
-            return View(surveyResults);
+            foreach (KeyValuePair<string, int> kvp in surveyCount)
+            {
+                var parkCount = parkDAL.GetPark(kvp.Key);
+                SurveyPark surveyList = new SurveyPark();
+                surveyList.surveyPark = parkCount;
+                surveyList.Count = kvp.Value;
+                surveyParks.Add(surveyList);
+            }
+            return View(surveyParks);
         }
 
         [HttpGet]
@@ -54,7 +62,7 @@ namespace Capstone.Web.Controllers
             if (ModelState.IsValid)
             {
            surveyDAL.SaveSurveyPost(newSurvey);
-            return RedirectToAction("Index", "Survey", new { newSurvey.ParkCode, newSurvey.EmailAddress, newSurvey.State, newSurvey.ActivityLevel });
+            return RedirectToAction("Index", "Survey", new { ParkCode = newSurvey.ParkCode, EmailAddress = newSurvey.EmailAddress, State = newSurvey.State, ActivityLevel = newSurvey.ActivityLevel });
             }
             else
             {

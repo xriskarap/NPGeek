@@ -19,10 +19,12 @@
             </select>*@
             <select asp-for="ParkCode" asp-items="Model.SurveyParks"></select>
         </div>
+
         <div>
             <label asp-for="EmailAddress">Email Address: </label>
             <input type="email" asp-for="EmailAddress" />
         </div>
+
         <div>
             <label asp-for="State">State of Residence: </label>
             <select asp-for="State" asp-items="Model.States"></select>
@@ -39,9 +41,9 @@
             <input type="radio" name="activityLevel" />
             <label asp-for="ActivityLevel">Extremely Active</label>
         </div>
-
-    </form>
-    <form asp-controller="survey" asp-action="addsurveypost" method="post">
         <input class="btn btn-lg" type="submit" value="Submit Survey!" />
     </form>
+    @*<form asp-controller="survey" asp-action="addsurveypost" method="post">
+        <input class="btn btn-lg" type="submit" value="Submit Survey!" />
+    </form>*@
 </div>

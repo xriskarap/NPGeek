@@ -20,7 +20,7 @@ namespace Capstone.Web.DAL
         {
             try
             {
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -33,40 +33,32 @@ namespace Capstone.Web.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
             }
         }
 
-        public IList<SurveyPost> GetSurveyPosts()
+        public Dictionary<string, int> GetSurveyPosts()
         {
-            List<SurveyPost> surveys = new List<SurveyPost>();
-
+            Dictionary<string, int> surveyResults = new Dictionary<string, int>();
             try
             {
-                using(SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT parkCode count(*) as votes FROM survey_result GROUP BY votes descending;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT parkCode, count(*) AS votes FROM survey_result GROUP BY parkCode ORDER BY votes desc, parkCode;", conn);
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var surveyPost = new SurveyPost()
-                        {
-                            ParkCode = Convert.ToString(reader["parkCode"]),
-                            EmailAddress = Convert.ToString(reader["emailAddress"]),
-                            State = Convert.ToString(reader["state"]),
-                            ActivityLevel = Convert.ToString(reader["activityLevel"]),
-                            Count = Convert.ToInt32(reader["votes"])
-                        };
-                        surveys.Add(surveyPost);
-                    }
+                        surveyResults.Add(Convert.ToString(reader["parkCode"]),
+                            Convert.ToInt32(reader["votes"]));
+                    };
                 }
-                return surveys;
+                return surveyResults;
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
             }
