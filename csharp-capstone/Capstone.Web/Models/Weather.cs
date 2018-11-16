@@ -17,8 +17,8 @@ namespace Capstone.Web.Models
 
         public int ConvertToCelsius(double temp)
         {
-            double celsius = 0;
-            celsius = (((temp - 32) * (5 / 9)));
+            double celsius = 0.0;
+            celsius = (((temp - 32) * (5.0 / 9.0)));
             return (int)celsius;
         }
     }

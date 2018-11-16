@@ -34,37 +34,29 @@ namespace Capstone.Web.Controllers
         {
             DetailView detailView = new DetailView();
             var park = dal.GetPark(id);
-            detailView.Park = park;
-            var weather = weatherDal.GetForecast(id);
-            detailView.fiveDay = weather;
-            return View(detailView);
-        }
-
-
-        [HttpGet]
-        public IActionResult Weather(string id)
-        {
-            var currentWeather = weatherDal.GetForecast(id);
             var degree = GetCurrentDegree();
-
+            detailView.Park = park;
+            var currentWeather = weatherDal.GetForecast(id);
             if (degree == "C")
             {
-                foreach(var weather in currentWeather)
+                foreach (var weather in currentWeather)
                 {
                     weather.Degree = "C";
                     weather.High = weather.ConvertToCelsius(weather.High);
                     weather.Low = weather.ConvertToCelsius(weather.Low);
                 }
             }
-            return View("Detail");
+            detailView.fiveDay = currentWeather;
+            return View(detailView);
         }
+
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult Weather(string id, string degree)
         {
             SaveCurrentDegree(degree);
-            return RedirectToAction("Weather", new { id });
+            return RedirectToAction("Detail", new { id });
         }
 
 

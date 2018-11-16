@@ -6,87 +6,85 @@
 
 <h2>Park Details</h2>
 
-<form method="get" asp-controller="home" asp-action="detail">
 
-    <img src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
 
-    <h3>@Model.Park.ParkName</h3>
+<img src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
 
-    <p>@Model.Park.Description</p>
+<h3>@Model.Park.ParkName</h3>
 
-    <form asp-controller="home" asp-action="weather" method="post" asp-route-id="@Model.Park.ParkCode">
-        Fahrenheit: @Html.RadioButton("Degree", "F", true)
-        Celsius: @Html.RadioButton("Degree", "C", false)
-        <input type="submit" value="Click me for Celsius" />
+<p>@Model.Park.Description</p>
+
+<form asp-controller="home" asp-action="weather" method="post" asp-route-id="@Model.Park.ParkCode">
+    Fahrenheit: @Html.RadioButton("Degree", "F", true)
+    Celsius: @Html.RadioButton("Degree", "C", false)
+    <input type="submit" value="Click me for Celsius" />
 </form>
-    <br />
-    <table class="table">
-        @foreach (var forecast in Model.fiveDay)
-        {
-            <tr>
-                <td>
-                    <label>Low:</label>
-                    @if (forecast.Low < 20)
-                    {
-                        <p class="weather">@forecast.Low</p>
-                        <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
-                    }
-                    else
-                    {
-                        <p class="weather">@forecast.Low</p>
-                    }
+<br />
+<table class="table">
+    @foreach (var forecast in Model.fiveDay)
+    {
+        <tr>
+            <td>
+                <label>Low:</label>
+                @if (forecast.Low < 20)
+                {
+                    <p class="weather">@forecast.Low</p>
+                    <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
+                }
+                else
+                {
+                    <p class="weather">@forecast.Low</p>
+                }
 
 
-                    <label>High:</label>
-                    @if (forecast.High > 75)
-                    {
-                        <p class="weather">@forecast.High</p>
-                        <p>Be sure to bring an extra gallon of water!!</p>
+                <label>High:</label>
+                @if (forecast.High > 75)
+                {
+                    <p class="weather">@forecast.High</p>
+                    <p>Be sure to bring an extra gallon of water!!</p>
 
-                    }
-                    else
-                    {
-                        <p class="weather">@forecast.High</p>
-                    }
+                }
+                else
+                {
+                    <p class="weather">@forecast.High</p>
+                }
 
-                    @if (forecast.High - forecast.Low >= 20)
-                    {
-                        <p>Be sure to wear breathable layers!!!</p>
-                    }
-                </td>
-                <td>
+                @if (forecast.High - forecast.Low >= 20)
+                {
+                    <p>Be sure to wear breathable layers!!!</p>
+                }
+            </td>
+            <td>
 
-                    <img class="weatherImg" src="~/images/@(forecast.Forecast).png" />
-                    @if (forecast.Forecast == "rain")
-                    {
-                        <p class="weather">@forecast.Forecast</p>
-                        <p>Be sure to pack some rain gear and waterproof shoes!!</p>
-                    }
+                <img class="weatherImg" src="~/images/@(forecast.Forecast).png" />
+                @if (forecast.Forecast == "rain")
+                {
+                    <p class="weather">@forecast.Forecast</p>
+                    <p>Be sure to pack some rain gear and waterproof shoes!!</p>
+                }
 
-                    else if (forecast.Forecast == "snow")
-                    {
-                        <p class="weather">@forecast.Forecast</p>
-                        <p>Bundle up and be sure to pack your snow shoes!!</p>
-                    }
-                    else if (forecast.Forecast == "thunderstorms")
-                    {
-                        <p class="weather">@forecast.Forecast</p>
-                        <p>Seek shelter and avoid hiking on exposed ridges!!</p>
+                else if (forecast.Forecast == "snow")
+                {
+                    <p class="weather">@forecast.Forecast</p>
+                    <p>Bundle up and be sure to pack your snow shoes!!</p>
+                }
+                else if (forecast.Forecast == "thunderstorms")
+                {
+                    <p class="weather">@forecast.Forecast</p>
+                    <p>Seek shelter and avoid hiking on exposed ridges!!</p>
 
-                    }
-                    else if (forecast.Forecast == "sun")
-                    {
-                        <p class="weather">@forecast.Forecast</p>
-                        <p>Pack sunblock!!</p>
+                }
+                else if (forecast.Forecast == "sun")
+                {
+                    <p class="weather">@forecast.Forecast</p>
+                    <p>Pack sunblock!!</p>
 
-                    }
+                }
 
-                </td>
-            </tr>
-            
+            </td>
+        </tr>
 
-        }
-    </table>
-</form>
 
+    }
+</table>
 

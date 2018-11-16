@@ -3,28 +3,28 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<div class="background"></div>
+<div class="body-content">
+    <h2>National Parks</h2>
 
 
-<h2>National Parks</h2>
-<table class="table">
 
-    <tbody>
 
-        @foreach (var park in Model)
-        {
-        <tr>
-            <td>
-                <a asp-controller="home" asp-action="detail" asp-route-id="@park.ParkCode"><img src="~/images/@(park.ParkCode).jpg" /></a>
-            </td>
-            <td>
-                <p>@park.ParkName</p>
-                <p>@park.State</p>
-                <p>@park.Description</p>
-            </td>
-        </tr>
+    @foreach (var park in Model)
+    {
 
-        }
 
-    </tbody>
+        <div class="parkcontainer">
+            <a asp-controller="home" asp-action="detail" asp-route-id="@park.ParkCode"><img class="parkimage" src="~/images/@(park.ParkCode).jpg" /></a>
 
-</table>
+
+            <p class="parkName">@park.ParkName</p>
+            <p class="parkState">@park.State</p>
+            <p class="parkDescription">@park.Description</p>
+        </div>
+
+    }
+
+
+
+</div>

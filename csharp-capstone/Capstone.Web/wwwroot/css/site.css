@@ -1,4 +1,7 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+﻿<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" >
+
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
     padding-top: 50px;
@@ -43,3 +46,57 @@ body {
     width: 15vh;
 
 }
+
+
+/* Style NavBar */
+.logo {
+    width: 20%;
+}
+
+.navbar-default {
+    background: #5A3F37; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C7744, #5A3F37); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C7744, #5A3F37); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity: 0.99;
+    position: fixed;
+}
+
+/* Style Home Index View */
+.background {
+    background-image: url(http://vunature.com/wp-content/uploads/2016/11/mountains-picture-nature-gallery-1920x1080.jpg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1000;
+}
+
+.body-content {
+    margin-top: 6rem;
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+}
+
+.parkimage {
+    width: 15vw;
+
+    border: 2px
+}
+
+.parkName {
+    font-family: PT Sans Narrow;
+    font-size: 2.0em;
+    color: silver;
+}
+
+.parkcontainer {
+    width: 30rem;
+    height: 53rem;
+    border: 1px solid silver;
+    float: left;
+    margin: 1.66%;
+    border-radius: 15px;
+    background-color: rgba(0,0,0, 0.8);
+}
+
