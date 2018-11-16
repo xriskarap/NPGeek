@@ -35,3 +35,11 @@ body {
         display: none;
     }
 }
+
+
+/* Style Weather Forecasts */
+
+.weatherImg {
+    width: 15vh;
+
+}

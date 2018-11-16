@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
+using Capstone.Web.Extensions;
 
 namespace Capstone.Web.Controllers
 {
@@ -40,6 +41,49 @@ namespace Capstone.Web.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Weather(string id)
+        {
+            var currentWeather = weatherDal.GetForecast(id);
+            var degree = GetCurrentDegree();
+
+            if (degree == "C")
+            {
+                foreach(var weather in currentWeather)
+                {
+                    weather.Degree = "C";
+                    weather.High = weather.ConvertToCelsius(weather.High);
+                    weather.Low = weather.ConvertToCelsius(weather.Low);
+                }
+            }
+            return View("Detail");
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Weather(string id, string degree)
+        {
+            SaveCurrentDegree(degree);
+            return RedirectToAction("Weather", new { id });
+        }
+
+
+        private void SaveCurrentDegree(string degree)
+        {
+            HttpContext.Session.Set<string>("Degree", degree);
+        }
+
+
+        private string GetCurrentDegree()
+        {
+            string currentDegree = HttpContext.Session.Get<string>("Degree");
+            if(currentDegree == null)
+            {
+                currentDegree = "F";
+                HttpContext.Session.Set("Degree", currentDegree);
+            }
+            return currentDegree;
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
