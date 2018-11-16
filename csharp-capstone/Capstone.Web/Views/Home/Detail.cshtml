@@ -15,9 +15,11 @@
 <p>@Model.Park.Description</p>
 
 <form asp-controller="home" asp-action="weather" method="post" asp-route-id="@Model.Park.ParkCode">
-    Fahrenheit: @Html.RadioButton("Degree", "F", true)
-    Celsius: @Html.RadioButton("Degree", "C", false)
-    <input type="submit" value="Click me for Celsius" />
+    @Html.RadioButton("Degree", "F", true) Fahrenheit
+    <br />
+    @Html.RadioButton("Degree", "C", false) Celsius
+    <br />
+    <input type="submit" value="Click me for Temperature Conversion" />
 </form>
 <br />
 <table class="table">
@@ -25,33 +27,69 @@
     {
         <tr>
             <td>
-                <label>Low:</label>
-                @if (forecast.Low < 20)
+                @if (forecast.Degree == "F")
                 {
-                    <p class="weather">@forecast.Low</p>
-                    <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
+                    <label>Low:</label>
+                    @if (forecast.Low < 20)
+                    {
+                        <p class="weather">@forecast.Low</p>
+                        <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
+                    }
+                    else
+                    {
+                        <p class="weather">@forecast.Low</p>
+                    }
+
+
+                    <label>High:</label>
+                    @if (forecast.High > 75)
+                    {
+                        <p class="weather">@forecast.High</p>
+                        <p>Be sure to bring an extra gallon of water!!</p>
+
+                    }
+                    else
+                    {
+                        <p class="weather">@forecast.High</p>
+                    }
+
+                    @if (forecast.High - forecast.Low >= 20)
+                    {
+                        <p>Be sure to wear breathable layers!!!</p>
+
+                    }
                 }
                 else
                 {
-                    <p class="weather">@forecast.Low</p>
-                }
+                    <label>Low:</label>
+                    @if (forecast.Low < -7)
+                    {
+                        <p class="weather">@forecast.Low</p>
+                        <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
+                    }
+                    else
+                    {
+                        <p class="weather">@forecast.Low</p>
+                    }
 
 
-                <label>High:</label>
-                @if (forecast.High > 75)
-                {
-                    <p class="weather">@forecast.High</p>
-                    <p>Be sure to bring an extra gallon of water!!</p>
+                    <label>High:</label>
+                    @if (forecast.High > 24)
+                    {
+                        <p class="weather">@forecast.High</p>
+                        <p>Be sure to bring an extra gallon of water!!</p>
 
-                }
-                else
-                {
-                    <p class="weather">@forecast.High</p>
-                }
+                    }
+                    else
+                    {
+                        <p class="weather">@forecast.High</p>
+                    }
 
-                @if (forecast.High - forecast.Low >= 20)
-                {
-                    <p>Be sure to wear breathable layers!!!</p>
+                    @if (forecast.High - forecast.Low >= 20)
+                    {
+                        <p>Be sure to wear breathable layers!!!</p>
+
+                    }
                 }
             </td>
             <td>
