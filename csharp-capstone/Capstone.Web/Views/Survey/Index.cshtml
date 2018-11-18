@@ -6,30 +6,34 @@
 }
 
 
-<h2>Top Rated Parks!!</h2>
 
-<div>
-    <table class="table">
 
-        <tbody>
+<div class="index">
+    <h1>Top Rated Parks!!</h1>
+    <section class="centeredPanel">
+        <table id="surveyIndexTable" class="table table-striped">
 
-            @foreach (var park in Model)
-            {
-                <tr>
-                    <td>
-                        <img src="~/images/@(park.surveyPark.ParkCode).jpg" />
-                    </td>
-                    <td>
-                        <p>@park.surveyPark.ParkName</p>
-                        <p>@park.surveyPark.Description</p>
-                        <p>@park.Count</p>
-                    </td>
-                </tr>
+            <tbody>
 
-            }
+                @foreach (var park in Model)
+                {
+                    <tr>
+                        <td>
+                            <img class="indexImage" src="~/images/@(park.surveyPark.ParkCode).jpg" />
+                        </td>
+                        <td>
+                            <h3 id="indexParkName">@park.surveyPark.ParkName</h3>
+                            <p>@park.surveyPark.Description</p>
+                            <label class="count">VOTES:<p>@park.Count</p></label>
+                        </td>
+                    </tr>
 
-        </tbody>
+                }
 
-    </table>
+            </tbody>
+
+        </table>
+    </section>
 </div>
+
 

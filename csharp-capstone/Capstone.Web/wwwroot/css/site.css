@@ -323,3 +323,124 @@ ul.nav.navbar-nav li.tabs a {
 .tempConverter {
     margin-top: 12%;
 }
+
+
+
+/* Style Survey Post Page */
+
+.surveyBackground {
+    background-image: url('/images/surveyBackgroundImage.jpg');
+    position: fixed;
+    background-size: cover;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+}
+
+section.centeredPanel {
+    clear: both;
+    display: block;
+    width: 80%;
+    vertical-align: top;
+    min-height: 350px;
+    background-color: rgba(25,75,50,0.7);
+    border-radius: 7px;
+    margin: 20px auto;
+}
+
+
+    section.centeredPanel h2, h3 {
+        font-family: PT Sans Narrow;
+        font-weight: 700;
+        color: #e97451;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    section.centeredPanel h3 {
+        color: #e97451;
+    }
+
+    section.centeredPanel p {
+        color: #000;
+        text-align: left;
+    }
+
+
+
+.surveySelect {
+    color: #e97451;
+    margin: 4px 0 2px 15px;
+}
+
+.surveyEmail {
+    color: #e97451;
+    margin: 4px 0 2px 15px;
+}
+
+.surveyState {
+    color: #e97451;
+    margin: 4px 0 2px 15px;
+}
+
+.surveyActivity {
+    color: #e97451;
+    margin: 4px 0 2px 15px;
+}
+
+.btn-lg {
+    background-color: rgb(25,60,50);
+    color: #e97451;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+
+/* Style Survey Index Page */
+
+.index {
+    background-image: url('/images/surveyBackgroundImage.jpg');
+    background-size: cover;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+}
+
+.indexParkName {
+    font-family: PT Sans Narrow;
+    font-weight: 700;
+    font-size: x-large;
+    color: green;
+}
+
+#indexParkName {
+    color: green;
+}
+
+.index p {
+    font-family: PT Sans Narrow;
+    font-size: large;
+}
+
+.indexImage {
+    width: 25vw;
+    height: auto;
+}
+
+#surveyIndexTable.table-striped tr:nth-of-type(odd) {
+        background-color: darkcyan;
+}
+
+#surveyIndexTable.table-striped tr:nth-of-type(even) {
+    background-color: lightcyan;
+}
+
+.index h1 {
+    text-align: center;
+    font-family: PT Sans Narrow;
+    font-weight: 700;
+}

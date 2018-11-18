@@ -4,46 +4,42 @@
     IList<SelectListItem> items = new List<SelectListItem>();
 }
 
-<div class="container">
-    <h2>National Parks Survey</h2>
-    <p>Please take a moment to fill out our survey and help people pick the best National Park to visit!</p>
-
-    <form asp-controller="survey" asp-action="addsurveypost" method="post">
-        <div>
-            <label asp-for="SurveyParks">Favorite Park: </label>
-            @* <select asp-for="SurveyParks" asp-items="items">
-                @foreach (SelectListItem item in Model.SurveyParks)
-                {
-                    <option value="@item.Value">@item.Text</option>
-                }
-            </select>*@
-            <select asp-for="ParkCode" asp-items="Model.SurveyParks"></select>
+<div class="surveyBackground">
+    <section class="centeredPanel">
+        <div class="surveyHeader">
+            <h2>National Parks Survey</h2>
+            <h3>Please take a moment to fill out our survey and help people pick the best National Park to visit!</h3>
         </div>
+        <div class="surveyGrid">
+            <form asp-controller="survey" asp-action="addsurveypost" method="post">
+                <div class="surveySelect">
+                    <label asp-for="SurveyParks">Favorite Park: </label>
+                    <select asp-for="ParkCode" asp-items="Model.SurveyParks"></select>
+                </div>
 
-        <div>
-            <label asp-for="EmailAddress">Email Address: </label>
-            <input type="email" asp-for="EmailAddress" />
-        </div>
+                <div class="surveyEmail">
+                    <label asp-for="EmailAddress">Email Address: </label>
+                    <input type="email" asp-for="EmailAddress" />
+                </div>
 
-        <div>
-            <label asp-for="State">State of Residence: </label>
-            <select asp-for="State" asp-items="Model.States"></select>
-        </div>
+                <div class="surveyState">
+                    <label asp-for="State">State of Residence: </label>
+                    <select asp-for="State" asp-items="Model.States"></select>
+                </div>
 
-        <div>
-            <label>Activity Level: </label>
-            <input type="radio" name="activityLevel" value="sedentary" />
-            <label asp-for="ActivityLevel">Sedentary</label>
-            <input type="radio" name="activityLevel" value="inactive" />
-            <label asp-for="ActivityLevel">Inactive</label>
-            <input type="radio" name="activityLevel" value="active" />
-            <label asp-for="ActivityLevel">Active</label>
-            <input type="radio" name="activityLevel" value="extremely active"/>
-            <label asp-for="ActivityLevel">Extremely Active</label>
+                <div class="surveyActivity">
+                    <label>Activity Level: </label>
+                    <input type="radio" name="activityLevel" value="sedentary" />
+                    <label asp-for="ActivityLevel">Sedentary</label>
+                    <input type="radio" name="activityLevel" value="inactive" />
+                    <label asp-for="ActivityLevel">Inactive</label>
+                    <input type="radio" name="activityLevel" value="active" />
+                    <label asp-for="ActivityLevel">Active</label>
+                    <input type="radio" name="activityLevel" value="extremely active" />
+                    <label asp-for="ActivityLevel">Extremely Active</label>
+                </div>
+                <input class="btn btn-lg" type="submit" value="Submit Survey!" />
+            </form>
         </div>
-        <input class="btn btn-lg" type="submit" value="Submit Survey!" />
-    </form>
-    @*<form asp-controller="survey" asp-action="addsurveypost" method="post">
-        <input class="btn btn-lg" type="submit" value="Submit Survey!" />
-    </form>*@
+    </section>
 </div>
