@@ -13,7 +13,7 @@ namespace Capstone.Web.Models
         public int Low { get; set; }
         public int High { get; set; }
         public string Forecast { get; set; }
-        public string Degree { get; set; }
+        public string Degree { get; set; } = "F";
 
         public int ConvertToCelsius(double temp)
         {

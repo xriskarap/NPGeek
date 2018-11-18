@@ -2,36 +2,39 @@
 
 @{
     ViewData["Title"] = "Detail";
+    DateTime day = new DateTime();
+    day = DateTime.Now;
 }
 
-<h2>Park Details</h2>
+<h2 class="parkNameDetail">@Model.Park.ParkName</h2>
+
+    <div class="picAndQuote">
+        <img class="detailImage" src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
+        <p class="quote">"@Model.Park.Quote"</p>
+        <p class="quoteSource">@Model.Park.QuoteSource</p>
+        <form asp-controller="home" asp-action="weather" method="post" asp-route-id="@Model.Park.ParkCode" class="tempConverter">
+            @Html.RadioButton("Degree", "F", true) Fahrenheit
+            <br />
+            @Html.RadioButton("Degree", "C", false) Celsius
+            <br />
+            <input type="submit" value="Click me for Temperature Conversion" />
+        </form>
+        <br />
+    </div>
 
 
+    <div class="forecasts">
+        @foreach (var forecast in Model.fiveDay)
+        {
+            <div class="forecastDay">
+                <div class="date">
+                    @day.DayOfWeek |
+                </div>
 
-<img src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
-
-<h3>@Model.Park.ParkName</h3>
-
-<p>@Model.Park.Description</p>
-
-
-<form asp-controller="home" asp-action="weather" method="post" asp-route-id="@Model.Park.ParkCode">
-    @Html.RadioButton("Degree", "F", true) Fahrenheit
-    <br />
-    @Html.RadioButton("Degree", "C", false) Celsius
-    <br />
-    <input type="submit" value="Click me for Temperature Conversion" />
-</form>
-<br />
-<table class="table">
-    @foreach (var forecast in Model.fiveDay)
-    {
-        <tr>
-            <td>
                 @if (forecast.Degree == "F")
                 {
-                    <label>Low:</label>
-                    @if (forecast.Low < 20)
+                    <p class="tempHeader">Low:</p>
+                    if (forecast.Low < 20)
                     {
                         <p class="weather">@forecast.Low</p>
                         <p>Bundle up, be aware of the dangers of exposure to frigid temperatures!!</p>
@@ -41,9 +44,8 @@
                         <p class="weather">@forecast.Low</p>
                     }
 
-
-                    <label>High:</label>
-                    @if (forecast.High > 75)
+                    <p class="tempHeader">High:</p>
+                    if (forecast.High > 75)
                     {
                         <p class="weather">@forecast.High</p>
                         <p>Be sure to bring an extra gallon of water!!</p>
@@ -54,10 +56,9 @@
                         <p class="weather">@forecast.High</p>
                     }
 
-                    @if (forecast.High - forecast.Low >= 20)
+                    if (forecast.High - forecast.Low >= 20)
                     {
                         <p>Be sure to wear breathable layers!!!</p>
-
                     }
                 }
                 else
@@ -79,51 +80,56 @@
                     {
                         <p class="weather">@forecast.High</p>
                         <p>Be sure to bring an extra gallon of water!!</p>
-
                     }
                     else
                     {
                         <p class="weather">@forecast.High</p>
                     }
 
-                    @if (forecast.High - forecast.Low >= 20)
+                    @if (forecast.High - forecast.Low >= 11)
                     {
                         <p>Be sure to wear breathable layers!!!</p>
-
                     }
                 }
-            </td>
-            <td>
 
                 <img class="weatherImg" src="~/images/@(forecast.Forecast).png" />
+
                 @if (forecast.Forecast == "rain")
                 {
-                    <p class="weather">@forecast.Forecast</p>
                     <p>Be sure to pack some rain gear and waterproof shoes!!</p>
                 }
 
                 else if (forecast.Forecast == "snow")
                 {
-                    <p class="weather">@forecast.Forecast</p>
                     <p>Bundle up and be sure to pack your snow shoes!!</p>
                 }
                 else if (forecast.Forecast == "thunderstorms")
                 {
-                    <p class="weather">@forecast.Forecast</p>
                     <p>Seek shelter and avoid hiking on exposed ridges!!</p>
 
                 }
                 else if (forecast.Forecast == "sun")
                 {
-                    <p class="weather">@forecast.Forecast</p>
                     <p>Pack sunblock!!</p>
-
                 }
 
-            </td>
-        </tr>
+                <!-- why you do this -->
+                <div class="hidden">@(day = day.AddDays(1))</div>
 
+            </div>
+        }
+    </div>
 
-    }
-</table>
-
+    <div class="parkDetails">
+        <p class="yearDetail">@Model.Park.YearFounded</p>
+        <h4>Located in @Model.Park.State</h4>
+        <p>Total Acres: @Model.Park.Acreage ac.</p>
+        <p>Elevation: @Model.Park.ElevationInFeet ft.</p>
+        <p>Miles of Trail: @Model.Park.MilesOfTrail mi.</p>
+        <p>Number of Campsites: @Model.Park.NumberOfCampsites</p>
+        <p>Climate: @Model.Park.Climate</p>
+        <p>Annual Visitors: @Model.Park.AnnualVisitorCount</p>
+        <p>Entry Fee: $@Model.Park.EntryFee</p>
+        <p>Number of Animal Species: @Model.Park.NumberOfAnimalSpecies</p>
+        <p>@Model.Park.Description</p>
+    </div>

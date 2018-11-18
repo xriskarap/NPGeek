@@ -6,6 +6,8 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    color: rgb(11,11,11);
+    background-color: rgb(248, 248, 248);
 }
 
 /* Wrapping element */
@@ -47,18 +49,14 @@ body {
 
 }
 
-
-/* Style NavBar */
-.logo {
-    width: 20%;
-}
-
 .navbar-default {
     background: #5A3F37; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2C7744, #5A3F37); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2C7744, #5A3F37); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.99;
     position: fixed;
+    width: 100vw;
+    z-index: 99999;
 }
 
 /* Style Home Index View */
@@ -96,7 +94,6 @@ body {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
     align-items: flex-start;
     align-content: space-around;
     flex-direction: row;
@@ -181,6 +178,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 10px 0 6px rgba(255,255,255,.3);
+    z-index: -99999;
 }
 
 .parkItems {
@@ -205,9 +203,14 @@ body {
         transform: scale(1.06);
     }
 
-    .tabs {
-        display: inline-block;
-    }
+.tabs {
+    display: inline-block;
+    color: rgb(244,244,244);
+}
+
+ul.nav.navbar-nav li.tabs a {
+    color: rgb(244,244,244);
+}
 
 .logo {
     display: inline-block;
@@ -221,4 +224,102 @@ body {
     top: 0;
     left: 0;
     height: 6vh;
+    z-index: 99999;
+    color: rgb(244,244,244);
+}
+
+.picAndQuote {
+    width: 30vw;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+
+.detailImage {
+    width: 100%;
+    image-rendering: optimizeQuality;
+    border: 1px solid rgb(2,2,2);
+    border-radius: 2px;
+}
+
+.quote {
+    margin-top: 6%;
+    border-left: 4px solid #2C7744;
+    padding-left: 2%;
+    width: 100%;
+}
+
+.quoteSource {
+    font-style: italic;
+    font-size: 12px;
+    text-align: right;
+}
+
+.parkNameDetail {
+    margin-top: 18vh;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.container {
+    width: 100vw;
+    margin-left: 0;
+}
+
+.forecastDay {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgba(2,2,2,.6);
+    width: 380px;
+    background: -webkit-linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* FF3.6+ */
+    background: linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* W3C */
+}
+
+.forecastDay img {
+    width: 50px;
+    border-radius: 60%;
+}
+
+.forecastDay:nth-of-type(1) img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.forecastDay:nth-of-type(1) .date {
+    margin-top: 0;
+}
+
+.tempHeader {
+    font-weight: bold;
+    display: inline;
+}
+
+.weather {
+    display: inline;
+}
+
+.forecasts {
+    width: calc(100% - 30vw - 19%);
+    margin: 4% auto 0 auto;
+}
+
+.yearDetail {
+    width: 100%;
+}
+
+.date {
+    text-align: center;
+    font-weight: bold;
+    margin: 1% 0;
+    display: inline;
+    text-transform: uppercase;
+}
+
+.tempConverter {
+    margin-top: 12%;
 }
