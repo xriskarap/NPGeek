@@ -3,28 +3,23 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 <div class="background"></div>
-<div class="body-content">
-    <h2>National Parks</h2>
-
-
-
-
+<section class="head">
+    <h2 class="headItem">National Parks</h2>
+</section>
+<section class="container">
     @foreach (var park in Model)
     {
+        <div class="parkContainer">
+            <div class="parkItems">
+                <a asp-controller="home" asp-action="detail" asp-route-id="@park.ParkCode"><img class="homeParkImage" src="~/images/@(park.ParkCode).jpg" /></a>
 
-
-        <div class="parkcontainer">
-            <a asp-controller="home" asp-action="detail" asp-route-id="@park.ParkCode"><img class="parkimage" src="~/images/@(park.ParkCode).jpg" /></a>
-
-
-            <p class="parkName">@park.ParkName</p>
-            <p class="parkState">@park.State</p>
-            <p class="parkDescription">@park.Description</p>
+                <p class="parkName">@park.ParkName</p>
+                <p class="parkState">@park.State</p>
+                <p class="parkDescription">@park.Description</p>
+            </div>
         </div>
-
     }
 
-
-
-</div>
+</section>
