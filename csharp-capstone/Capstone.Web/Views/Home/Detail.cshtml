@@ -5,8 +5,9 @@
     DateTime day = new DateTime();
     day = DateTime.Now;
 }
+    <div class="parkDetailBackground"></div>
 
-<h2 class="parkNameDetail">@Model.Park.ParkName</h2>
+    <h2 class="parkNameDetail"><strong>@Model.Park.ParkName</strong></h2>
 
     <div class="picAndQuote">
         <img class="detailImage" src="~/images/@(Model.Park.ParkCode).jpg" alt="Image of @Model.Park.ParkName" />
@@ -17,7 +18,7 @@
             <br />
             @Html.RadioButton("Degree", "C", false) Celsius
             <br />
-            <input type="submit" value="Click me for Temperature Conversion" />
+            <input class="button" type="submit" value="Click To Convert" />
         </form>
         <br />
     </div>
@@ -115,21 +116,21 @@
 
                 <!-- why you do this -->
                 <div class="hidden">@(day = day.AddDays(1))</div>
-
             </div>
         }
     </div>
-
-    <div class="parkDetails">
-        <p class="yearDetail">@Model.Park.YearFounded</p>
-        <h4>Located in @Model.Park.State</h4>
-        <p>Total Acres: @Model.Park.Acreage ac.</p>
-        <p>Elevation: @Model.Park.ElevationInFeet ft.</p>
-        <p>Miles of Trail: @Model.Park.MilesOfTrail mi.</p>
-        <p>Number of Campsites: @Model.Park.NumberOfCampsites</p>
-        <p>Climate: @Model.Park.Climate</p>
-        <p>Annual Visitors: @Model.Park.AnnualVisitorCount</p>
-        <p>Entry Fee: $@Model.Park.EntryFee</p>
-        <p>Number of Animal Species: @Model.Park.NumberOfAnimalSpecies</p>
-        <p>@Model.Park.Description</p>
+    <div class="parkDetailContainer">
+        <div class="parkDetails">
+            <p class="yearDetail">Founded in @Model.Park.YearFounded.</p>
+            <h4 class="state">Located in @Model.Park.State</h4>
+            <p class="acreage"><strong>Total Acres:</strong> @Model.Park.Acreage ac.</p>
+            <p class="elevation"><strong>Elevation:</strong> @Model.Park.ElevationInFeet ft.</p>
+            <p class="milage"><strong>Miles of Trail:</strong> @Model.Park.MilesOfTrail mi.</p>
+            <p class="campsites"><strong>Number of Campsites:</strong> @Model.Park.NumberOfCampsites</p>
+            <p class="climate"><strong>Climate:</strong> @Model.Park.Climate</p>
+            <p class="visitors"><strong>Annual Visitors:</strong> @Model.Park.AnnualVisitorCount</p>
+            <p class="fee"><strong>Entry Fee:</strong> $@Model.Park.EntryFee</p>
+            <p class="animals"><strong>Number of Animal Species:</strong> @Model.Park.NumberOfAnimalSpecies</p>
+            <p class="detailDescription">@Model.Park.Description</p>
+        </div>
     </div>

@@ -1,6 +1,4 @@
 ﻿<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" >
-
-
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
@@ -46,7 +44,6 @@ body {
 
 .weatherImg {
     width: 15vh;
-
 }
 
 .navbar-default {
@@ -72,8 +69,7 @@ body {
 }
 
 .head {
-    justify-content:center;
-
+    justify-content: center;
 }
 
 .headItem {
@@ -112,7 +108,7 @@ body {
     border: 2px;
     margin: 0 auto;
     font-size: 0;
-    filter:blur(4px);
+    filter: blur(4px);
     border-radius: 3px;
     border: 1px solid rgba(0,0,0,.8);
     opacity: .8;
@@ -155,17 +151,17 @@ body {
         margin-top: 1.5vh;
     }
 
-.parkContainer:nth-of-type(1) {
-    margin-top: 1vh;
-}
+    .parkContainer:nth-of-type(1) {
+        margin-top: 1vh;
+    }
 
-.parkContainer:nth-of-type(2) {
-    margin-top: 1vh;
-}
+    .parkContainer:nth-of-type(2) {
+        margin-top: 1vh;
+    }
 
-.parkContainer:nth-of-type(3) {
-    margin-top: 1vh;
-}
+    .parkContainer:nth-of-type(3) {
+        margin-top: 1vh;
+    }
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -191,6 +187,7 @@ body {
     -webkit-transition: transform 0.2s;
     background-color: rgba(0,0,0, 0.8);
 }
+
     .parkContainer:hover .homeParkImage {
         filter: blur(0);
         image-rendering: optimizeQuality;
@@ -198,10 +195,10 @@ body {
         opacity: 1;
     }
 
-    .homeParkImage:hover {
-        transition: all .3s;
-        transform: scale(1.06);
-    }
+.homeParkImage:hover {
+    transition: all .3s;
+    transform: scale(1.06);
+}
 
 .tabs {
     display: inline-block;
@@ -228,10 +225,51 @@ ul.nav.navbar-nav li.tabs a {
     color: rgb(244,244,244);
 }
 
+/* Styling the Park Detail Page */
+.parkDetailBackground {
+    background-image: url('/images/parkDetailBackground.jpg');
+    position: fixed;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+}
+
+.parkNameDetail {
+    color: black;
+}
+
 .picAndQuote {
     width: 30vw;
     margin-left: 8%;
     margin-top: 4%;
+    border: 1px solid rgb(110, 97, 47);
+    border-radius: 3px;
+    background: #485563; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity: 0.92;
+}
+
+.parkDetailContainer {
+    display: block;
+    width: 100rem;
+    border: 1px solid rgb(110, 97, 47);
+    border-radius: 3px;
+    background: #485563; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity: 0.92;
+    justify-content: center;
+
+}
+
+.parkDetails {
+    font-size: 18px;
+    color: #e97451;
+    text-emphasis: filled;
 }
 
 .detailImage {
@@ -243,15 +281,16 @@ ul.nav.navbar-nav li.tabs a {
 
 .quote {
     margin-top: 6%;
-    border-left: 4px solid #2C7744;
-    padding-left: 2%;
+    padding-left: 6%;
     width: 100%;
+    color: #e97451;
 }
 
 .quoteSource {
     font-style: italic;
     font-size: 12px;
     text-align: right;
+    color: #e97451;
 }
 
 .parkNameDetail {
@@ -268,31 +307,34 @@ ul.nav.navbar-nav li.tabs a {
     margin-left: 0;
 }
 
+
 .forecastDay {
     display: block;
     margin: 0 auto;
     text-align: center;
+    color: silver;
     border: 1px solid rgba(2,2,2,.6);
     width: 380px;
-    background: -webkit-linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* Chrome 10+, Saf5.1+ */
-    background: -moz-linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* FF3.6+ */
-    background: linear-gradient(360deg, #00d2ff 10%, #0083b0 360%); /* W3C */
+background: #000046;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.forecastDay img {
-    width: 50px;
-    border-radius: 60%;
-}
+    .forecastDay img {
+        width: 50px;
+        border-radius: 60%;
+    }
 
-.forecastDay:nth-of-type(1) img {
-    width: 200px;
-    display: block;
-    margin: 0 auto;
-}
+    .forecastDay:nth-of-type(1) img {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+    }
 
-.forecastDay:nth-of-type(1) .date {
-    margin-top: 0;
-}
+    .forecastDay:nth-of-type(1) .date {
+        margin-top: 0;
+    }
 
 .tempHeader {
     font-weight: bold;
@@ -322,8 +364,12 @@ ul.nav.navbar-nav li.tabs a {
 
 .tempConverter {
     margin-top: 12%;
+    color: silver;
 }
 
+.button {
+    color: black;
+}
 
 
 /* Style Survey Post Page */
@@ -402,8 +448,9 @@ section.centeredPanel {
 
 .index {
     background-image: url('/images/surveyBackgroundImage.jpg');
+    position: fixed;
     background-size: cover;
-    top: 50px;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -432,7 +479,7 @@ section.centeredPanel {
 }
 
 #surveyIndexTable.table-striped tr:nth-of-type(odd) {
-        background-color: darkcyan;
+    background-color: darkcyan;
 }
 
 #surveyIndexTable.table-striped tr:nth-of-type(even) {
