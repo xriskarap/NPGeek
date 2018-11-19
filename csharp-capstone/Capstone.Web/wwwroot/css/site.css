@@ -239,6 +239,7 @@ ul.nav.navbar-nav li.tabs a {
 
 .parkNameDetail {
     color: black;
+    font-family: Caveat;
 }
 
 .picAndQuote {
@@ -255,7 +256,6 @@ ul.nav.navbar-nav li.tabs a {
 
 .parkDetailContainer {
     display: block;
-    width: 100rem;
     border: 1px solid rgb(110, 97, 47);
     border-radius: 3px;
     background: #485563; /* fallback for old browsers */
@@ -263,13 +263,14 @@ ul.nav.navbar-nav li.tabs a {
     background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.92;
     justify-content: center;
+    font-family: Caveat;
 
 }
 
 .parkDetails {
-    font-size: 18px;
-    color: #e97451;
-    text-emphasis: filled;
+    font-size: 32px;
+    font-weight: 300;
+    color: silver;
 }
 
 .detailImage {
@@ -281,16 +282,19 @@ ul.nav.navbar-nav li.tabs a {
 
 .quote {
     margin-top: 6%;
-    padding-left: 6%;
+    margin-left: 1%;
+    border-left: 3px solid silver;
+    padding-left: 2%;
     width: 100%;
-    color: #e97451;
+    color: silver;
+    font-family: courgette;
 }
 
 .quoteSource {
     font-style: italic;
     font-size: 12px;
     text-align: right;
-    color: #e97451;
+    color: silver;
 }
 
 .parkNameDetail {
@@ -348,6 +352,19 @@ background: linear-gradient(to bottom, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, 
 .forecasts {
     width: calc(100% - 30vw - 19%);
     margin: 4% auto 0 auto;
+}
+
+.detailDescription {
+    text-align: center;
+    font-size: 22px;
+    font-family: Courgette;
+}
+
+.detailTitle {
+    display: block;
+    text-align: center;
+    color: silver;
+    border-bottom: 1px solid silver;
 }
 
 .yearDetail {

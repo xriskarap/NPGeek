@@ -121,8 +121,10 @@
     </div>
     <div class="parkDetailContainer">
         <div class="parkDetails">
-            <p class="yearDetail">Founded in @Model.Park.YearFounded.</p>
-            <h4 class="state">Located in @Model.Park.State</h4>
+            <p class="detailDescription">@Model.Park.Description</p>
+            <h2 class="detailTitle"><strong>Park Information</strong></h2>
+            <p class="yearDetail">Founded in @Model.Park.YearFounded</p>
+            <h4 class="state">Located in @Model.Park.State.</h4>
             <p class="acreage"><strong>Total Acres:</strong> @Model.Park.Acreage ac.</p>
             <p class="elevation"><strong>Elevation:</strong> @Model.Park.ElevationInFeet ft.</p>
             <p class="milage"><strong>Miles of Trail:</strong> @Model.Park.MilesOfTrail mi.</p>
@@ -131,6 +133,5 @@
             <p class="visitors"><strong>Annual Visitors:</strong> @Model.Park.AnnualVisitorCount</p>
             <p class="fee"><strong>Entry Fee:</strong> $@Model.Park.EntryFee</p>
             <p class="animals"><strong>Number of Animal Species:</strong> @Model.Park.NumberOfAnimalSpecies</p>
-            <p class="detailDescription">@Model.Park.Description</p>
         </div>
     </div>
